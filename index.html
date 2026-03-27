@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrow & Pixy | BLOXFRUIT STORE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="header-contact-top">
+        <div class="support-content">
+            <i class="fab fa-discord"></i> <span>@realarrows | @realpixy</span>
+            <div style="margin-top: 4px;"></div>
+            <i class="fas fa-envelope"></i> <span>support@           .com</span>
+        </div>
+    </div>
+
+    <header>
+        <div class="header-container">
+            <i class="fas fa-ship"></i>
+            <h1>Arrow & Pixy <span class="highlight">STORE</span></h1>
+            <i class="fas fa-ship"></i>
+        </div>
+        <p>PREMIUM PERMANENT FRUITS & GAMEPASSES</p>
+    </header>
+
+    <main id="main-store">
+        <section class="game-section">
+            <div class="section-title">
+                <i class="fas fa-apple-alt" style="color: var(--gold);"></i>
+                <h2>Permanent Fruits</h2>
+            </div>
+            <div class="items-grid" id="bf-fruits"></div>
+        </section>
+
+        <section class="game-section">
+            <div class="section-title">
+                <i class="fas fa-scroll" style="color: var(--gold);"></i>
+                <h2>Elite Gamepasses</h2>
+            </div>
+            <div class="items-grid" id="bf-passes"></div>
+        </section>
+    </main>
+
+    <div id="checkout-modal">
+        <div class="modal-content">
+            
+            <div id="step-1">
+                <h2 id="modal-item-name">Item Name</h2>
+                <div class="input-stack">
+                    <label>ROBLOX USERNAME</label>
+                    <input type="text" id="roblox-user" placeholder="Enter Username">
+                    
+                    <label>DISCORD OR EMAIL (How we reach you?)</label>
+                    <input type="text" id="contact-method" placeholder="User#0000 or email@example.com">
+
+                    <label>ADDITIONAL COMMENTS (OPTIONAL)</label>
+                    <input type="text" id="order-comments" placeholder="e.g. Please gift to Alt Account">
+                </div>
+                <button onclick="goToStep2()">PROCEED TO PAYMENT</button>
+                <button onclick="closeModal()" class="btn-cancel">BACK TO SHOP</button>
+            </div>
+
+            <div id="step-2" class="hidden">
+                <h2>Payment Details</h2>
+                <p>SELECT DEPOSIT METHOD:</p>
+                <select id="crypto-select" onchange="showAddress()">
+                    <option value="">-- Choose Crypto --</option>
+                    <option value="LTC">Litecoin (LTC)</option>
+                    <option value="USDT">USDT (TRC20)</option>
+                </select>
+                
+                <div id="address-box" class="hidden">
+                    <div class="address-display" id="wallet-address"></div>
+                    <button id="copy-btn" onclick="copyAddress()">COPY ADDRESS</button>
+                    
+                    <div class="input-stack">
+                        <label>PASTE TRANSACTION HASH (TXID)</label>
+                        <input type="text" id="tx-hash" placeholder="Paste Hash here">
+                    </div>
+                </div>
+
+                <button onclick="confirmPurchase()">CONFIRM PURCHASE</button>
+                <button onclick="closeModal()" class="btn-cancel">CANCEL</button>
+            </div>
+
+            <div id="step-success" class="hidden">
+                <div id="status-icon" style="font-size: 4rem; margin-bottom: 10px;">⏳</div>
+                <h2 id="status-header" style="color: var(--gold); margin-bottom: 15px;">Payment Pending...</h2>
+                <div class="success-message">
+                    <p id="status-text">Processing transaction... please wait.</p>
+                    <div class="support-box">
+                        <p>We will contact you via the info provided. <strong>Keep checking!</strong></p>
+                        <hr style="border:0; border-top:1px solid #222; margin:15px 0;">
+                        <p>Support Discord: <span class="support-handles">@realarrows | @realpixy</span></p>
+                        <p>Support Email: <span class="support-handles">support@           .com</span></p>
+                    </div>
+                </div>
+                <button onclick="closeModal()" style="background: #333; color: white; margin-top: 20px;">BACK TO STORE</button>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="footer-support">
+        <div class="support-content">
+            <i class="fab fa-discord"></i> <span>@realarrows | @realpixy</span>
+            <br>
+            <i class="fas fa-envelope"></i> <span>support@           .com</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

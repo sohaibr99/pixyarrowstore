@@ -1,0 +1,332 @@
+/* --- ARROW & PIXY STORE: COMPLETE STYLESHEET --- */
+
+:root {
+    --gold: #ffcc00;
+    --dark-bg: #050505;
+    --card-bg: rgba(20, 20, 20, 0.95);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --success-green: #2ecc71;
+    --error-red: #e74c3c;
+    --pending-yellow: #f1c40f;
+}
+
+* {
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: radial-gradient(circle at 50% 0%, #1a0505 0%, #050505 100%);
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* --- CONTACT BADGES (Top & Bottom) --- */
+.header-contact-top {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 10px 15px;
+    border-radius: 12px;
+    border-left: 2px solid var(--gold);
+    backdrop-filter: blur(5px);
+    z-index: 10;
+}
+
+.footer-support {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    padding: 12px 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    z-index: 99;
+    border-right: 3px solid var(--gold);
+}
+
+.support-content {
+    font-size: 0.75rem;
+    color: #888;
+    line-height: 1.4;
+    text-align: right;
+}
+
+.support-content i {
+    color: var(--gold);
+    margin-right: 5px;
+}
+
+.support-content span {
+    color: #fff;
+    font-weight: 600;
+}
+
+/* --- HEADER --- */
+header {
+    text-align: center;
+    padding: 80px 20px 40px 20px;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+header h1 {
+    font-size: 2.8rem;
+    margin: 0;
+    letter-spacing: 2px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.highlight {
+    color: var(--gold);
+    text-shadow: 0 0 20px rgba(255, 204, 0, 0.4);
+}
+
+header p {
+    color: #666;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+    font-weight: 700;
+}
+
+/* --- STORE GRID --- */
+.game-section {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 30px;
+    border-left: 4px solid var(--gold);
+    padding-left: 15px;
+}
+
+.section-title h2 {
+    font-size: 1.6rem;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 30px;
+}
+
+.item-card {
+    background: var(--card-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 30px 20px;
+    text-align: center;
+    backdrop-filter: blur(5px);
+    position: relative;
+    overflow: hidden;
+}
+
+.item-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+    transition: 0.5s;
+}
+
+.item-card:hover::before {
+    left: 100%;
+}
+
+.item-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.item-card img {
+    width: 130px;
+    height: 130px;
+    object-fit: contain;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
+}
+
+.item-card h3 {
+    margin: 10px 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #eee;
+}
+
+.price {
+    color: var(--gold);
+    font-weight: 900;
+    font-size: 1.5rem;
+    display: block;
+    margin-bottom: 20px;
+}
+
+/* --- BUTTONS --- */
+button {
+    width: 100%;
+    padding: 16px;
+    border-radius: 12px;
+    border: none;
+    font-weight: 900;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: var(--gold);
+    color: #000;
+    font-size: 0.95rem;
+}
+
+button:hover {
+    filter: brightness(1.1);
+    transform: scale(1.02);
+}
+
+.btn-cancel {
+    background: transparent;
+    color: #555;
+    font-size: 0.8rem;
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+.btn-cancel:hover {
+    color: #fff;
+}
+
+/* --- MODAL SYSTEM --- */
+#checkout-modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.96);
+    backdrop-filter: blur(12px);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #0d0d0d;
+    border: 1px solid #222;
+    padding: 40px;
+    border-radius: 25px;
+    width: 90%;
+    max-width: 440px;
+    text-align: center;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* --- FORMS & INPUTS --- */
+.input-stack {
+    text-align: left;
+    margin: 25px 0;
+}
+
+label {
+    font-size: 0.7rem;
+    color: #666;
+    font-weight: 900;
+    display: block;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+input, select {
+    width: 100%;
+    padding: 14px;
+    background: #151515;
+    border: 1px solid #252525;
+    border-radius: 10px;
+    color: white;
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--gold);
+}
+
+/* --- SUCCESS / STATUS AREA --- */
+.success-message {
+    margin-top: 20px;
+}
+
+.support-box {
+    background: #111;
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 25px;
+    border: 1px solid #222;
+    text-align: left;
+}
+
+.support-box p {
+    font-size: 0.85rem;
+    margin: 5px 0;
+    color: #999;
+}
+
+.support-handles {
+    color: var(--gold);
+    font-weight: 800;
+}
+
+.address-display {
+    background: #000;
+    padding: 15px;
+    border-radius: 10px;
+    font-family: monospace;
+    color: #00ffcc;
+    border: 1px dashed #444;
+    word-break: break-all;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 768px) {
+    .header-contact-top {
+        display: none; /* Hide top badge on mobile to save space */
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .footer-support {
+        bottom: 10px;
+        right: 10px;
+        padding: 10px 15px;
+    }
+}
