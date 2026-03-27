@@ -10,11 +10,23 @@
 </head>
 <body>
 
+    <div class="top-left-box">
+        <div class="box-header">
+            <i class="fas fa-clock"></i> COMING SOON
+        </div>
+        <div class="box-images">
+            <img src="https://tr.rbxcdn.com/180DAY-b6426ad9d8b07339a22647108ef9de15/768/432/Image/Webp/noFilter" alt="Soon" class="soon-thumb">
+            <img src="https://tr.rbxcdn.com/180DAY-13c60b507da977e1c867e51338ab8986/768/432/Image/Webp/noFilter" alt="Soon" class="soon-thumb">
+            <img src="https://tr.rbxcdn.com/180DAY-eb783deba3b661ff753ab9be4089188d/768/432/Image/Webp/noFilter" alt="Soon" class="soon-thumb">
+            <img src="https://tr.rbxcdn.com/180DAY-fe7335c3ad752e84323cd81ae38de69a/768/432/Image/Webp/noFilter" alt="Soon" class="soon-thumb">
+        </div>
+    </div>
+
     <div class="header-contact-top">
         <div class="support-content">
             <i class="fab fa-discord"></i> <span>@realarrows | @realpixy</span>
             <div style="margin-top: 4px;"></div>
-            <i class="fas fa-envelope"></i> <span>support@           .com</span>
+            <i class="fas fa-envelope"></i> <span>pixystrikes@gmail.com</span>
         </div>
     </div>
 
@@ -47,16 +59,13 @@
 
     <div id="checkout-modal">
         <div class="modal-content">
-            
             <div id="step-1">
                 <h2 id="modal-item-name">Item Name</h2>
                 <div class="input-stack">
                     <label>ROBLOX USERNAME</label>
                     <input type="text" id="roblox-user" placeholder="Enter Username">
-                    
-                    <label>DISCORD OR EMAIL (How we reach you?)</label>
+                    <label>DISCORD OR EMAIL</label>
                     <input type="text" id="contact-method" placeholder="User#0000 or email@example.com">
-
                     <label>ADDITIONAL COMMENTS (OPTIONAL)</label>
                     <input type="text" id="order-comments" placeholder="e.g. Please gift to Alt Account">
                 </div>
@@ -70,19 +79,19 @@
                 <select id="crypto-select" onchange="showAddress()">
                     <option value="">-- Choose Crypto --</option>
                     <option value="LTC">Litecoin (LTC)</option>
-                    <option value="USDT">USDT (TRC20)</option>
+                    <option value="USDT_TRX">USDT (TRC-20)</option>
+                    <option value="USDT_ETH">USDT (ERC-20)</option>
+                    <option value="USDT_BNB">USDT (BEP-20)</option>
                 </select>
                 
                 <div id="address-box" class="hidden">
                     <div class="address-display" id="wallet-address"></div>
                     <button id="copy-btn" onclick="copyAddress()">COPY ADDRESS</button>
-                    
                     <div class="input-stack">
                         <label>PASTE TRANSACTION HASH (TXID)</label>
                         <input type="text" id="tx-hash" placeholder="Paste Hash here">
                     </div>
                 </div>
-
                 <button onclick="confirmPurchase()">CONFIRM PURCHASE</button>
                 <button onclick="closeModal()" class="btn-cancel">CANCEL</button>
             </div>
@@ -93,15 +102,12 @@
                 <div class="success-message">
                     <p id="status-text">Processing transaction... please wait.</p>
                     <div class="support-box">
-                        <p>We will contact you via the info provided. <strong>Keep checking!</strong></p>
-                        <hr style="border:0; border-top:1px solid #222; margin:15px 0;">
                         <p>Support Discord: <span class="support-handles">@realarrows | @realpixy</span></p>
-                        <p>Support Email: <span class="support-handles">support@           .com</span></p>
+                        <p>Support Email: <span class="support-handles">pixystrikes@gmail.com</span></p>
                     </div>
                 </div>
                 <button onclick="closeModal()" style="background: #333; color: white; margin-top: 20px;">BACK TO STORE</button>
             </div>
-
         </div>
     </div>
 
@@ -109,7 +115,7 @@
         <div class="support-content">
             <i class="fab fa-discord"></i> <span>@realarrows | @realpixy</span>
             <br>
-            <i class="fas fa-envelope"></i> <span>support@           .com</span>
+            <i class="fas fa-envelope"></i> <span>pixystrikes@gmail.com</span>
         </div>
     </div>
 
