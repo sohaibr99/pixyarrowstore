@@ -3,24 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arrow & Pixy | BLOXFRUIT STORE</title>
+    <title>Arrow & Pixy | PREMIUM ASSET HUB</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <div class="top-left-box">
-        <div class="box-header">
-            <i class="fas fa-clock"></i> COMING SOON
-        </div>
-        <div class="box-images">
-            <img src="https://tr.rbxcdn.com/180DAY-b6426ad9d8b07339a22647108ef9de15/768/432/Image/Webp/noFilter" alt="Soon" class="soon-thumb">
-            <img src="https://tr.rbxcdn.com/180DAY-13c60b507da977e1c867e51338ab8986/768/432/Image/Webp/noFilter" alt="Soon" class="soon-thumb">
-            <img src="https://tr.rbxcdn.com/180DAY-eb783deba3b661ff753ab9be4089188d/768/432/Image/Webp/noFilter" alt="Soon" class="soon-thumb">
-            <img src="https://tr.rbxcdn.com/180DAY-fe7335c3ad752e84323cd81ae38de69a/768/432/Image/Webp/noFilter" alt="Soon" class="soon-thumb">
-        </div>
-    </div>
 
     <div class="header-contact-top">
         <div class="support-content">
@@ -30,31 +18,76 @@
         </div>
     </div>
 
-    <header>
-        <div class="header-container">
-            <i class="fas fa-ship"></i>
-            <h1>Arrow & Pixy <span class="highlight">STORE</span></h1>
-            <i class="fas fa-ship"></i>
+    <div id="hub-view">
+        <header>
+            <div class="header-container">
+                <i class="fas fa-shield-alt"></i>
+                <h1>Arrow & Pixy <span class="highlight">HUB</span></h1>
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <p>SELECT YOUR UNIVERSE</p>
+        </header>
+
+        <div class="hub-container">
+            <div class="hub-card" onclick="openStore('bloxfruits')">
+                <div class="hub-img-box">
+                    <img src="https://tr.rbxcdn.com/180DAY-e1ce51abae5188805c3fee78ec7f4d08/768/432/Image/Webp/noFilter" alt="Blox Fruits">
+                </div>
+                <div class="hub-info">
+                    <h3>Blox Fruits</h3>
+                    <p>Permanent Fruits & Elite Gamepasses</p>
+                    <button class="hub-btn">ENTER STORE</button>
+                </div>
+            </div>
+
+            <div class="hub-card" onclick="openStore('adoptme')">
+                <div class="hub-img-box">
+                    <img src="https://tr.rbxcdn.com/180DAY-b6426ad9d8b07339a22647108ef9de15/768/432/Image/Webp/noFilter" alt="Adopt Me">
+                </div>
+                <div class="hub-info">
+                    <h3>Adopt Me</h3>
+                    <p>High-Tier Legendaries (FR/NFR/MFR)</p>
+                    <button class="hub-btn">ENTER STORE</button>
+                </div>
+            </div>
+
+            <div class="hub-card" onclick="openStore('mm2')">
+                <div class="hub-img-box">
+                    <img src="https://tr.rbxcdn.com/180DAY-fe7335c3ad752e84323cd81ae38de69a/768/432/Image/Webp/noFilter" alt="MM2">
+                </div>
+                <div class="hub-info">
+                    <h3>Murder Mystery 2</h3>
+                    <p>Godlies, Ancients & Exclusive Knives</p>
+                    <button class="hub-btn">ENTER STORE</button>
+                </div>
+            </div>
+
+            <div class="hub-card" onclick="openStore('rivals')">
+                <div class="hub-img-box">
+                    <img src="https://tr.rbxcdn.com/180DAY-eb783deba3b661ff753ab9be4089188d/768/432/Image/Webp/noFilter" alt="Rivals">
+                </div>
+                <div class="hub-info">
+                    <h3>Rivals</h3>
+                    <p>Exclusive Weapon Skins & Wraps</p>
+                    <button class="hub-btn">ENTER STORE</button>
+                </div>
+            </div>
         </div>
-        <p>PREMIUM PERMANENT FRUITS & GAMEPASSES</p>
-    </header>
+    </div>
 
-    <main id="main-store">
-        <section class="game-section">
-            <div class="section-title">
-                <i class="fas fa-apple-alt" style="color: var(--gold);"></i>
-                <h2>Permanent Fruits</h2>
+    <main id="main-store" class="hidden">
+        <header>
+            <div class="header-container">
+                <i class="fas fa-ship"></i>
+                <h1 id="store-title">Arrow & Pixy <span class="highlight">STORE</span></h1>
+                <i class="fas fa-ship"></i>
             </div>
-            <div class="items-grid" id="bf-fruits"></div>
-        </section>
+            <p id="store-subtitle">PREMIUM ROBLOX ASSETS</p>
+            <button onclick="backToHub()" class="btn-cancel" style="width: auto; padding: 10px 20px; color: var(--gold);">← BACK TO HUB</button>
+        </header>
 
-        <section class="game-section">
-            <div class="section-title">
-                <i class="fas fa-scroll" style="color: var(--gold);"></i>
-                <h2>Elite Gamepasses</h2>
+        <div id="store-content">
             </div>
-            <div class="items-grid" id="bf-passes"></div>
-        </section>
     </main>
 
     <div id="checkout-modal">
