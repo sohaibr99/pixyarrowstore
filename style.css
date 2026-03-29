@@ -310,3 +310,273 @@ input:focus { border-color: var(--gold); outline: none; }
     header h1 { font-size: 2rem; }
     .sidebar, .header-contact-top { display: none; }
 }
+
+/* Debugging: Highlight the store if it's active */
+#main-store:not(.hidden) {
+    border: 2px solid lime !important;
+    min-height: 100vh;
+}
+
+/* This ensures that when the store is active, it's visible */
+#main-store:not(.hidden) {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    min-height: 100vh;
+}
+
+/* Temporary fix for layout */
+.hub-container {
+    min-height: 400px;
+}
+
+/* 1. Ensure the hidden class actually works */
+.hidden {
+    display: none !important;
+}
+
+#main-store {
+    position: relative;
+    z-index: 99;
+    background: #050505; /* Matches your body background */
+    min-height: 100vh;
+}
+
+#hub-view {
+    position: relative;
+    z-index: 10;
+}
+#main-store {
+    background: #050505 !important; /* Forces the background color */
+    min-height: 100vh !important;   /* Forces it to fill the screen height */
+    position: relative !important;
+    z-index: 999 !important;        /* Brings it to the very front */
+    display: none;                  /* Hidden by default until JS triggers it */
+}
+
+#store-content {
+    padding: 40px 20px;
+    display: block !important;
+    opacity: 1 !important;
+}
+
+.support-request-wrapper {
+    /* Matches your hub-container max-width for perfect alignment */
+    max-width: 1200px; 
+    margin: 20px auto; /* Same gap as between the grid rows */
+    padding: 0 10px; /* Slight padding for screen edges */
+}
+
+.support-request-box {
+    background: #111; /* Dark background matching card bottoms */
+    border: 1px solid rgba(255, 215, 0, 0.2); /* Subtle gold border */
+    border-radius: 20px; /* Matches card corner radius */
+    overflow: hidden; /* Keeps image corners rounded */
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.support-request-box:hover {
+    transform: translateY(-5px);
+    border-color: var(--gold);
+}
+
+.request-image-container {
+    width: 100%;
+    height: 300px; /* Adjust height to fit your wide image */
+}
+
+.request-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image fills the area beautifully */
+}
+
+.request-info {
+    padding: 20px;
+    background: #111; /* Dark bottom matching card bottoms */
+}
+
+.request-text h3 {
+    color: #fff;
+    margin: 0 0 5px 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.request-text p {
+    color: #aaa;
+    margin: 0 0 15px 0;
+    font-size: 0.9rem;
+}
+
+/* Specific styling for the Contact Support button to match 'Enter Store' */
+.support-btn {
+    width: 100% !important;
+    text-align: center;
+    background: var(--gold);
+    color: #000;
+    font-weight: 700;
+    padding: 12px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    display: inline-block;
+}
+
+.support-btn:hover {
+    background: #fff;
+    color: #000;
+}
+.support-request-wrapper {
+    /* Matches your hub-container max-width for perfect alignment */
+    max-width: 1200px; 
+    margin: 20px auto; /* Same gap as between the grid rows */
+    padding: 0 10px; /* Slight padding for screen edges */
+}
+
+.support-request-box {
+    background: #111; /* Dark background matching card bottoms */
+    border: 1px solid rgba(255, 215, 0, 0.2); /* Subtle gold border */
+    border-radius: 20px; /* Matches card corner radius */
+    overflow: hidden; /* Keeps image corners rounded */
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.support-request-box:hover {
+    transform: translateY(-5px);
+    border-color: var(--gold);
+}
+
+.request-image-container {
+    width: 100%;
+    height: 300px; /* Adjust height to fit your wide image */
+}
+
+.request-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image fills the area beautifully */
+}
+
+.request-info {
+    padding: 20px;
+    background: #111; /* Dark bottom matching card bottoms */
+}
+
+.request-text h3 {
+    color: #fff;
+    margin: 0 0 5px 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.request-text p {
+    color: #aaa;
+    margin: 0 0 15px 0;
+    font-size: 0.9rem;
+}
+
+/* Specific styling for the Contact Support button to match 'Enter Store' */
+.support-btn {
+    width: 100% !important;
+    text-align: center;
+    background: var(--gold);
+    color: #000;
+    font-weight: 700;
+    padding: 12px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    display: inline-block;
+}
+
+.support-btn:hover {
+    background: #fff;
+    color: #000;
+}
+.custom-request-banner {
+    max-width: 1200px; /* Match your hub-container width */
+    margin: 40px auto; /* Space below the grid */
+    background: #111;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    border-radius: 20px;
+    display: flex; /* Side-by-side layout */
+    overflow: hidden;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.custom-request-banner:hover {
+    border-color: var(--gold);
+    transform: translateY(-5px);
+}
+
+.banner-image {
+    width: 35%; /* Left side image */
+    height: 200px;
+}
+
+.banner-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.banner-content {
+    width: 65%; /* Right side info */
+    padding: 30px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.banner-text h3 {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.banner-text p {
+    color: #888;
+    font-size: 0.95rem;
+    max-width: 400px;
+}
+
+.contact-btn {
+    width: auto !important;
+    padding: 12px 30px !important;
+    white-space: nowrap;
+    text-decoration: none;
+    text-align: center;
+}
+
+/* Mobile: Stack vertically */
+@media (max-width: 800px) {
+    .custom-request-banner {
+        flex-direction: column;
+        margin: 20px;
+    }
+    .banner-image, .banner-content {
+        width: 100%;
+    }
+    .banner-content {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+    .contact-btn {
+        width: 100% !important;
+    }
+}
