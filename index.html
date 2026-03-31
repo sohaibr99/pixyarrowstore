@@ -144,60 +144,99 @@
             </div>
         </div>
     </main>
+<div id="checkout-modal" style="display: none;"> <div class="modal-content">
+        
+        <div id="step-1">
+            <h2 id="modal-item-name" class="highlight">Checkout</h2>
 
-    <div id="checkout-modal">
-        <div class="modal-content">
-            <div id="step-1">
-                <h2 id="modal-item-name">Item Name</h2>
-                <div class="input-stack">
-                    <label>ROBLOX USERNAME</label>
-                    <input type="text" id="roblox-user" placeholder="Enter Username">
-                    <label>DISCORD OR EMAIL</label>
-                    <input type="text" id="contact-method" placeholder="User#0000 or email@example.com">
-                    <label>ADDITIONAL COMMENTS (OPTIONAL)</label>
-                    <input type="text" id="order-comments" placeholder="e.g. Please gift to Alt Account">
-                </div>
-                <button onclick="goToStep2()">PROCEED TO PAYMENT</button>
-                <button onclick="closeModal()" class="btn-secondary">BACK TO SHOP</button>
+            <div id="error-message" class="error-ui hidden">
+                <i class="fas fa-exclamation-circle"></i> 
+                <span id="error-text">All fields are mandatory!</span>
             </div>
 
-            <div id="step-2" class="hidden">
-                <h2>Payment Details</h2>
-                <p>SELECT DEPOSIT METHOD:</p>
-                <select id="crypto-select" onchange="showAddress()">
-                    <option value="">-- Choose Crypto --</option>
-                    <option value="LTC">Litecoin (LTC)</option>
-                    <option value="USDT_TRX">USDT (TRC-20)</option>
-                    <option value="USDT_ETH">USDT (ERC-20)</option>
-                    <option value="USDT_BNB">USDT (BEP-20)</option>
+            <div class="input-stack" style="margin-top: 15px;">
+                <label>ROBLOX USERNAME *</label>
+                <input type="text" id="cust-roblox" placeholder="Enter your Roblox username">
+            </div>
+
+            <div class="input-stack">
+                <label>DISCORD ID OR EMAIL ADDRESS *</label>
+                <input type="text" id="cust-discord" placeholder="e.g. user#0000 or email@example.com">
+            </div>
+
+            <div class="input-stack">
+                <label>ADDITIONAL COMMENTS (OPTIONAL)</label>
+                <textarea id="cust-comments" placeholder="Any special instructions for delivery?" rows="2"></textarea>
+            </div>
+
+            <div class="input-stack">
+                <label>SELECT PAYMENT METHOD</label>
+                <select id="payment-method" onchange="updatePaymentUI()">
+                    <option value="ltc">Litecoin (LTC)</option>
+                    <option value="usdt_bep20">USDT (BEP20 - BSC)</option>
+                    <option value="usdt_trc20">USDT (TRC20 - TRON)</option>
+                    <option value="manual">Easypaisa / PayPal / CashApp</option>
                 </select>
-                
-                <div id="address-box" class="hidden">
-                    <div class="address-display" id="wallet-address"></div>
-                    <button id="copy-btn" onclick="copyAddress()">COPY ADDRESS</button>
-                    <div class="input-stack" style="margin-top: 15px;">
-                        <label>PASTE TRANSACTION HASH (TXID)</label>
-                        <input type="text" id="tx-hash" placeholder="Paste Hash here">
-                    </div>
-                </div>
-                <button onclick="confirmPurchase()">CONFIRM PURCHASE</button>
-                <button onclick="closeModal()" class="btn-secondary">CANCEL</button>
             </div>
 
-            <div id="step-success" class="hidden">
-                <div id="status-icon" style="font-size: 4rem; margin-bottom: 10px;">⏳</div>
-                <h2 id="status-header" style="color: var(--gold); margin-bottom: 15px;">Payment Pending...</h2>
-                <div class="success-message">
-                    <p id="status-text">Processing transaction... please wait.</p>
-                    <div class="support-box" style="background: #111; padding: 15px; border-radius: 10px; margin-top: 10px; border: 1px solid #222;">
-                        <p style="font-size: 0.8rem; margin: 5px 0;">Support Discord: <span style="color: var(--gold);">@realarrows | @realpixy</span></p>
-                        <p style="font-size: 0.8rem; margin: 5px 0;">Support Email: <span style="color: var(--gold);">pixystrikes@gmail.com</span></p>
-                    </div>
+            <div id="section-ltc" class="payment-section">
+                <div class="input-stack">
+                    <label>LTC ADDRESS (LTC NETWORK)</label>
+                    <div class="address-display">LUTPGLQ8B84n5D9gWhjCyDQx6Leb8o91tC</div>
                 </div>
-                <button onclick="closeModal()" style="background: #333; color: white; margin-top: 20px;">BACK TO STORE</button>
             </div>
+
+            <div id="section-usdt-bep20" class="payment-section hidden">
+                <div class="input-stack">
+                    <label>USDT ADDRESS (BEP20 - BSC)</label>
+                    <div class="address-display">0x1758Cd49b80C309D8B9aD7ad025BD5E1830f7e1E</div>
+                </div>
+            </div>
+
+            <div id="section-usdt-trc20" class="payment-section hidden">
+                <div class="input-stack">
+                    <label>USDT ADDRESS (TRC20 - TRON)</label>
+                    <div class="address-display">TCrPMWfvVZjQdDDQdTyK7DNDzxgKGFhDZR</div>
+                </div>
+            </div>
+
+            <div id="section-manual" class="payment-section hidden">
+                <div class="manual-support-card">
+                    <p>To pay via <strong>Easypaisa, PayPal, or CashApp</strong>, please open a ticket in our Discord.</p>
+                    <a href="https://discord.gg/4JUaY4DWSq" target="_blank" class="discord-ticket-btn">
+                        <i class="fab fa-discord"></i> CREATE SUPPORT TICKET
+                    </a>
+                </div>
+            </div>
+
+            <div id="crypto-inputs">
+                <div class="input-stack" style="margin-top:15px;">
+                    <label id="hash-label">YOUR TRANSACTION HASH / ID *</label>
+                    <input type="text" id="tx-hash" placeholder="Enter transaction hash here...">
+                </div>
+                <button onclick="processPayment()" id="main-pay-btn">PROCEED TO VERIFICATION</button>
+            </div>
+            
+            <button onclick="closeModal()" class="btn-secondary">BACK TO SHOP</button>
         </div>
+
+        <div id="step-success" class="hidden">
+            <div id="status-icon" style="font-size: 4rem; margin-bottom: 10px;">⏳</div>
+            <h2 id="status-header" style="color: #f1c40f; margin-bottom: 15px;">Payment Pending...</h2>
+            <div class="success-message">
+                <p id="status-text">Processing transaction... please wait.</p>
+                <div class="support-box">
+                    <p>Support Discord: <span style="color: #f1c40f;">@realarrows | @realpixy</span></p>
+                    <p>Support Email: <span style="color: #f1c40f;">pixystrikes@gmail.com</span></p>
+                </div>
+            </div>
+            <button onclick="closeModal()" style="background: #333; color: white; margin-top: 20px;">BACK TO STORE</button>
+        </div>
+
     </div>
+</div>
+
+    
 
     <div class="footer-support">
         <div class="support-content">
