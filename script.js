@@ -1,5 +1,5 @@
 /* --- ARROW & PIXY: MULTI-GAME PREMIUM HUB v2.5 --- */
-
+console.log("Vercel Build v2.6.1 - Active");
 
 const PRODUCTS = [
     // --- BLOX FRUITS: PERMANENT FRUITS ---
