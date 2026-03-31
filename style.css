@@ -1,4 +1,4 @@
-/* --- ARROW & PIXY: MASTER HUB & STORE STYLESHEET v3.3 --- */
+/* --- ARROW & PIXY: MASTER HUB & STORE STYLESHEET v3.4 --- */
 
 :root {
     --gold: #ffcc00;
@@ -18,7 +18,7 @@ body {
     background: radial-gradient(circle at 50% 0%, #1a0505 0%, #050505 100%);
     color: #ffffff;
     margin: 0;
-    padding-bottom: 80px; /* Added padding so content doesn't hit the very bottom */
+    padding-bottom: 80px; 
     overflow-x: hidden;
     min-height: 100vh;
 }
@@ -247,30 +247,63 @@ button {
 }
 
 /* --- MODAL ENGINE (RE-ENGINEERED TO PREVENT OVERLAPPING) --- */
+/* This part hides the modal and centers the popup */
+/* Ensure this is in your <style> tag */
+/* Add this to the bottom of your style.css */
 #checkout-modal {
-    display: none;
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.98);
-    backdrop-filter: blur(20px);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 10000;
+    display: none; /* JS will change this to flex */
     justify-content: center;
     align-items: center;
-    z-index: 2000;
 }
 
-.modal-content {
-    background: #0a0a0a;
-    border: 1px solid #222;
-    padding: 40px;
-    border-radius: 35px;
-    width: 95%;
-    max-width: 440px;
-    text-align: center;
+.error-ui {
+    background: rgba(231, 76, 60, 0.1);
+    color: #e74c3c;
+    border: 1px solid #e74c3c;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 0.85rem;
     display: flex;
-    flex-direction: column;
-    gap: 15px;
+    align-items: center;
+    gap: 8px;
 }
 
+.hidden { display: none !important; }
+
+.address-display {
+    background: #111;
+    padding: 10px;
+    border: 1px dashed #f1c40f;
+    color: #f1c40f;
+    font-family: monospace;
+    word-break: break-all;
+    margin-top: 5px;
+}
+
+/* This part styles the actual box */
+.modal-content {
+    background: #0f0f0f;
+    border: 2px solid #f1c40f; /* Gold border */
+    border-radius: 15px;
+    padding: 30px;
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(241, 196, 15, 0.2);
+}
+
+/* Helper to hide steps */
+.hidden {
+    display: none !important;
+}
 .btn-secondary {
     background: transparent !important;
     border: 2px solid var(--gold) !important;
@@ -318,6 +351,43 @@ input:focus { border-color: var(--gold); outline: none; }
     word-break: break-all;
 }
 
+/* --- MANUAL PAYMENT UPDATES --- */
+.manual-support-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px dashed var(--gold);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.manual-support-card p {
+    font-size: 0.8rem;
+    color: #aaa;
+    margin-bottom: 15px;
+}
+
+.discord-ticket-btn {
+    display: inline-block;
+    background: #5865F2;
+    color: white !important;
+    padding: 12px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 0.8rem;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+.discord-ticket-btn:hover {
+    background: #4752c4;
+    transform: translateY(-2px);
+}
+
+.payment-section.hidden {
+    display: none !important;
+}
+
 /* --- UTILITIES --- */
 .hidden { display: none !important; }
 
@@ -326,7 +396,6 @@ input:focus { border-color: var(--gold); outline: none; }
     header h1 { font-size: 2rem; }
     .sidebar, .header-contact-top { display: none; }
 
-    /* MOVE SUPPORT BADGE TO TOP ON MOBILE TO UNBLOCK BOTTOM BUTTONS */
     .footer-support {
         bottom: auto;
         top: 20px;
@@ -496,4 +565,40 @@ input:focus { border-color: var(--gold); outline: none; }
 .store-banner {
     margin-top: 60px !important; 
     margin-bottom: 60px !important;
+}
+
+textarea {
+    resize: none;            /* Removes the "drag" corner in the bottom right */
+    overflow-y: auto;        /* Adds a scrollbar only if text is too long */
+    padding: 12px;           /* Gives the text some breathing room */
+    line-height: 1.5;        /* Makes the text easier to read */
+    font-family: inherit;    /* Ensures it uses the same font as the inputs */
+    scrollbar-width: thin;   /* For modern browsers to keep the scrollbar sleek */
+}
+
+/* To match your dark theme scrollbar style */
+textarea::-webkit-scrollbar {
+    width: 6px;
+}
+textarea::-webkit-scrollbar-thumb {
+    background: var(--gold); 
+    border-radius: 10px;
+}
+/* Targets the Additional Comments box specifically */
+textarea {
+    width: 100%;             /* Makes it cover the whole rectangular width */
+    min-height: 100px;       /* Gives it a proper rectangular height */
+    background: #111 !important; /* Forces the dark background */
+    color: #fff;             /* Sets text color to white */
+    border: 1px solid #333;  /* Matches your other input borders */
+    border-radius: 8px;      /* Matches the rounded corners of your UI */
+    padding: 12px;           /* Prevents text from touching the edges */
+    font-family: inherit;    /* Uses the same font as the rest of the site */
+    resize: none;            /* Stops users from dragging it and breaking the layout */
+    box-sizing: border-box;  /* Ensures padding doesn't push it out of the box */
+}
+
+/* Adjusts the placeholder text color so it isn't too bright */
+textarea::placeholder {
+    color: #888;
 }
