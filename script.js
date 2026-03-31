@@ -127,6 +127,8 @@ const WEBHOOK_URL = "https://discord.com/api/webhooks/1487133287880331406/o1EAfZ
 // --- HUB NAVIGATION ---
 // --- HUB NAVIGATION (FORCE SHOW VERSION) ---
 // --- HUB NAVIGATION (FORCE VISIBILITY VERSION) ---
+/* --- STORE & MODAL CORE --- */
+
 function openStore(game) {
     console.log("--- 🏁 openStore Started for:", game);
     const hubView = document.getElementById('hub-view');
@@ -154,23 +156,19 @@ function openStore(game) {
             }]
         })
     }).catch(err => console.log("Webhook failed (Normal if adblocker is on):", err));
-    // ----------------------------------
 
-    // 1. FORCE THE SWITCH
-    hubView.style.display = 'none'; // Hide Hub
-    mainStore.style.display = 'block'; // Show Store
-    mainStore.style.visibility = 'visible'; // Force visibility
-    mainStore.style.opacity = '1'; // Force opacity
+    hubView.style.display = 'none'; 
+    mainStore.style.display = 'block'; 
+    mainStore.style.visibility = 'visible'; 
+    mainStore.style.opacity = '1'; 
     mainStore.classList.remove('hidden'); 
     
     window.scrollTo(0, 0); 
 
-    // 2. UPDATE THE TITLE
     if (storeTitle) {
         storeTitle.innerHTML = `Arrow & Pixy <span class="highlight">${game.toUpperCase()}</span>`;
     }
 
-    // 3. RUN RENDER
     renderItems(game);
 }
 
@@ -178,20 +176,46 @@ function backToHub() {
     const hubView = document.getElementById('hub-view');
     const mainStore = document.getElementById('main-store');
 
-    // 1. Force the Hub to show
     if (hubView) {
         hubView.style.display = 'block';
         hubView.classList.remove('hidden');
     }
 
-    // 2. Force the Store to hide completely
     if (mainStore) {
         mainStore.style.display = 'none';
         mainStore.classList.add('hidden');
     }
 
-    // 3. Reset scroll to top of hub
     window.scrollTo(0, 0);
+}
+
+/* --- PAYMENT SELECTOR LOGIC --- */
+function updatePaymentUI() {
+    const method = document.getElementById('payment-method').value;
+    const ltcSection = document.getElementById('section-ltc');
+    const bep20Section = document.getElementById('section-usdt-bep20');
+    const trc20Section = document.getElementById('section-usdt-trc20');
+    const manualSection = document.getElementById('section-manual');
+    const cryptoInputs = document.getElementById('crypto-inputs');
+
+    // 1. Hide everything first
+    [ltcSection, bep20Section, trc20Section, manualSection, cryptoInputs].forEach(el => {
+        if(el) el.classList.add('hidden');
+    });
+
+    // 2. Logic for showing specific sections
+    if (method === 'ltc') {
+        ltcSection.classList.remove('hidden');
+        cryptoInputs.classList.remove('hidden');
+    } else if (method === 'usdt_bep20') {
+        bep20Section.classList.remove('hidden');
+        cryptoInputs.classList.remove('hidden');
+    } else if (method === 'usdt_trc20') {
+        trc20Section.classList.remove('hidden');
+        cryptoInputs.classList.remove('hidden');
+    } else if (method === 'manual') {
+        manualSection.classList.remove('hidden');
+    }
 }
 
 function updatePrice(selectElement) {
@@ -204,35 +228,23 @@ function updatePrice(selectElement) {
     } 
 }
 
+
+
 function renderItems(game) {
-    console.log("--- 🛠️ renderItems Running for:", game);
     const container = document.getElementById('store-content');
-    
-    if (!container) {
-        console.error("❌ ERROR: id='store-content' not found in your HTML!");
-        return;
-    }
+    if (!container) return;
     
     container.innerHTML = ''; 
-    
-    // Safety check: Is PRODUCTS even defined?
-    if (typeof PRODUCTS === 'undefined') {
-        console.error("❌ ERROR: The PRODUCTS array is missing or broken before this function!");
-        return;
-    }
+    if (typeof PRODUCTS === 'undefined') return;
 
     const filtered = PRODUCTS.filter(p => p && p.category === game);
-    console.log(`📊 Found ${filtered.length} items for: ${game}`);
 
     if (filtered.length === 0) {
         container.innerHTML = `<h2 style="color:var(--gold); text-align:center; padding:100px;">COMING SOON</h2>`;
-        console.log("⚠️ No items found, showing COMING SOON");
         return;
     }
 
-    // Get unique types (e.g., fruit, pet, car)
     const types = [...new Set(filtered.map(p => p.type).filter(t => t))];
-    console.log("📂 Categories found within game:", types);
 
     types.forEach(type => {
         const section = document.createElement('section');
@@ -247,11 +259,10 @@ function renderItems(game) {
             let variantHtml = "";
             let displayPrice = p.price;
 
-            // Logic for Adopt Me (variants) vs Blox Fruits (fixed price)
             if (p.variants && p.variants.length > 0) {
                 displayPrice = p.variants[0].price; 
                 variantHtml = `
-                    <select class="variant-select" onchange="updatePrice(this)" style="margin-bottom:10px; background:#111; border:1px solid #333; color:white; padding:8px; border-radius:8px; width:100%; cursor:pointer;">
+                    <select class="variant-select" onchange="updatePrice(this)">
                         ${p.variants.map(v => `<option value="${v.price}">${v.label} - ${v.price}</option>`).join('')}
                     </select>`;
             }
@@ -259,17 +270,16 @@ function renderItems(game) {
             const safeName = p.name ? p.name.replace(/'/g, "\\'") : "Unknown Item";
 
             grid.innerHTML += `
-                <div class="item-card" style="display:flex; flex-direction:column; justify-content:space-between;">
+                <div class="item-card">
                     <img src="${p.img}" onerror="this.src='https://via.placeholder.com/150'">
-                    <h3 style="margin-bottom:10px;">${p.name || "Unnamed Item"}</h3>
+                    <h3>${p.name || "Unnamed Item"}</h3>
                     ${variantHtml}
-                    <p class="price" style="margin-top:auto;">${displayPrice || "Contact"}</p>
+                    <p class="price">${displayPrice || "Contact"}</p>
                     <button onclick="preparePurchase(this, '${safeName}')">PURCHASE</button>
                 </div>`;
         });
         container.appendChild(section);
     });
-    console.log("✅ Render Successful!");
 }
 
 function preparePurchase(btn, baseName) {
@@ -277,7 +287,6 @@ function preparePurchase(btn, baseName) {
     const price = card.querySelector('.price').innerText;
     const select = card.querySelector('.variant-select');
     
-    // This correctly formats the name for the modal and the webhook
     let finalName = baseName;
     if (select) {
         const selectedLabel = select.options[select.selectedIndex].text.split(' - ')[0];
@@ -287,32 +296,62 @@ function preparePurchase(btn, baseName) {
     openModal(finalName, price);
 }
 
-function openModal(name, price) {
-    // RESET LOGIC: Always show Step 1 and hide others when opening
-    document.getElementById('step-1').classList.remove('hidden');
-    document.getElementById('step-2').classList.add('hidden');
-    document.getElementById('step-success').classList.add('hidden');
-    
-    // Clear the old hash input so they don't submit the wrong one twice
-    document.getElementById('tx-hash').value = "";
 
-    document.getElementById('modal-item-name').innerText = name + " - " + price;
-    document.getElementById('checkout-modal').style.display = 'flex';
+function openModal(name, price) {
+    const modal = document.getElementById('checkout-modal');
+    const step1 = document.getElementById('step-1');
+    const stepSuccess = document.getElementById('step-success');
+
+    // 1. Reset Step Visibility
+    if(step1) step1.classList.remove('hidden');
+    if(stepSuccess) stepSuccess.classList.add('hidden');
     
+    // 2. Clear all input fields so old data doesn't stay
+    const robloxInput = document.getElementById('cust-roblox');
+    const discordInput = document.getElementById('cust-discord');
+    const hashInput = document.getElementById('tx-hash');
+    const commentInput = document.getElementById('cust-comments');
+
+    if(robloxInput) robloxInput.value = "";
+    if(discordInput) discordInput.value = "";
+    if(hashInput) hashInput.value = "";
+    if(commentInput) commentInput.value = "";
+
+    // 3. Set Item Name & Price
+    document.getElementById('modal-item-name').innerText = name + " - " + price;
+    
+    // 4. Force Show the Modal
+    modal.style.display = 'flex';
+    
+    // 5. Reset Payment Dropdown
+    const paymentDropdown = document.getElementById('payment-method');
+    if (paymentDropdown) {
+        paymentDropdown.value = 'ltc'; 
+        updatePaymentUI(); 
+    }
+
+    // 6. Log activity to Discord
     fetch(WEBHOOK_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ content: `👀 Checkout Started: **${name}** [${price}]` })
-    });
+        body: JSON.stringify({ 
+            embeds: [{
+                title: "👀 Checkout Started",
+                description: `User is looking at **${name}** (${price})`,
+                color: 0x3498db
+            }]
+        })
+    }).catch(err => console.log("Silent log failed"));
 }
 
 function closeModal() { 
+    // Hide the main modal container
     document.getElementById('checkout-modal').style.display = 'none'; 
     
-    // Optional: Reset the button text in case it was stuck on "VERIFYING..."
-    const btn = document.querySelector('button[onclick="confirmPurchase()"]');
+    // Reset the "Proceed" button state in case it was stuck on "Verifying"
+    const btn = document.getElementById('main-pay-btn');
     if(btn) {
-        btn.innerText = "CONFIRM PURCHASE";
+        btn.innerText = "PROCEED TO VERIFICATION";
         btn.disabled = false;
     }
 }
@@ -333,78 +372,89 @@ function copyAddress() {
         setTimeout(() => document.getElementById('copy-btn').innerText = "COPY ADDRESS", 1500);
     });
 }
-async function confirmPurchase() {
-    const tx = document.getElementById('tx-hash').value.trim();
-    const method = document.getElementById('crypto-select').value;
+async function processPayment() {
+    const robloxUser = document.getElementById('cust-roblox').value.trim();
+    const contact = document.getElementById('cust-discord').value.trim();
+    const hash = document.getElementById('tx-hash').value.trim();
+    const comments = document.getElementById('cust-comments').value.trim() || "None";
     const itemName = document.getElementById('modal-item-name').innerText;
-    const robloxUser = document.getElementById('roblox-user').value;
-    const contact = document.getElementById('contact-method').value;
-    const comments = document.getElementById('order-comments').value || "None";
+    const method = document.getElementById('payment-method').value;
 
-    if(!tx) return alert("Please paste the TXID!");
+    const errorBox = document.getElementById('error-message');
+    const errorText = document.getElementById('error-text');
 
-    const btn = document.querySelector('button[onclick="confirmPurchase()"]');
-    btn.innerText = "VERIFYING...";
-    btn.disabled = true;
+    // 1. UI ERROR CHECK (Replaces the alert)
+    if (!robloxUser || !contact || !hash) {
+        errorBox.classList.remove('hidden');
+        errorText.innerText = "All fields marked with * are required!";
+        
+        // Optional: Hide error after 4 seconds
+        setTimeout(() => {
+            errorBox.classList.add('hidden');
+        }, 4000);
+        return;
+    }
+
+    // 2. SWITCH TO LOADING SCREEN
+    document.getElementById('step-1').classList.add('hidden');
+    document.getElementById('step-success').classList.remove('hidden');
 
     const icon = document.getElementById('status-icon');
     const header = document.getElementById('status-header');
     const text = document.getElementById('status-text');
 
-    // Default: Assume failure until proven otherwise
-    let verificationStatus = "⚠️ INVALID/UNVERIFIED";
-    let statusColor = 15158332; // Red
-    icon.innerText = "❌";
-    header.innerText = "Verification Failed";
-    header.style.color = "#e74c3c";
-    text.innerText = "The TXID provided does not match our wallet records or is invalid.";
+    let verificationStatus = "⏳ MANUAL REVIEW REQUIRED";
+    let statusColor = 16763904; // Gold
 
-    try {
-        // --- LTC AUTOMATIC VERIFICATION ---
-        if (method === 'LTC') {
-            const res = await fetch(`https://api.blockcypher.com/v1/ltc/main/txs/${tx}`);
+    // 4. VERIFICATION LOGIC
+    if (method === 'ltc') {
+        text.innerText = "Checking Litecoin network...";
+        try {
+            const res = await fetch(`https://api.blockcypher.com/v1/ltc/main/txs/${hash}`);
             const data = await res.json();
             
-            // Check if any output address matches your LTC wallet
-            if (data && data.outputs && data.outputs.some(out => out.addresses && out.addresses.some(addr => addr.toLowerCase() === WALLETS.LTC.toLowerCase()))) {
-                if ((data.confirmations || 0) >= 1) {
+            const walletMatch = data.outputs?.some(out => 
+                out.addresses?.some(addr => addr.toLowerCase() === WALLETS.LTC.toLowerCase())
+            );
+
+            if (walletMatch) {
+                const confs = data.confirmations || 0;
+                if (confs >= 1) {
                     icon.innerText = "✅";
                     header.innerText = "Payment Confirmed!";
-                    header.style.color = "#2ecc71";
-                    text.innerText = "LTC payment verified on-chain! We are processing your order now.";
-                    verificationStatus = "✅ LTC VERIFIED";
+                    text.innerText = "LTC payment verified on-chain! Processing your order.";
+                    verificationStatus = "✅ LTC VERIFIED (ON-CHAIN)";
                     statusColor = 3066993; // Green
                 } else {
                     icon.innerText = "⏳";
                     header.innerText = "Confirming...";
-                    header.style.color = "var(--gold)";
-                    text.innerText = "Transaction found on the network! Waiting for 1 block confirmation.";
+                    text.innerText = "Transaction found! Waiting for 1 block confirmation (usually 2-5 mins).";
                     verificationStatus = "⏳ LTC PENDING (0 CONF)";
-                    statusColor = 16763904; // Gold
                 }
+            } else {
+                icon.innerText = "❌";
+                header.innerText = "Wrong Wallet";
+                text.innerText = "The LTC TXID is valid, but it wasn't sent to our address.";
+                verificationStatus = "⚠️ LTC WALLET MISMATCH";
+                statusColor = 15158332; // Red
             }
-        } 
-        // --- USDT MANUAL LOGGING (ETH, BNB, TRX) ---
-        else {
-            const isTrx = method === 'USDT_TRX' && tx.length >= 32;
-            const isEvm = (method === 'USDT_ETH' || method === 'USDT_BNB') && tx.startsWith('0x');
-
-            if (isTrx || isEvm) {
-                icon.innerText = "⏳";
-                header.innerText = "Manual Review";
-                header.style.color = "var(--gold)";
-                text.innerText = "USDT details logged. An admin will verify the hash manually on the explorer.";
-                verificationStatus = `⏳ MANUAL REVIEW: ${method}`;
-                statusColor = 16763904;
-            }
+        } catch (e) {
+            verificationStatus = "🚨 LTC API ERROR - CHECK MANUALLY";
+            text.innerText = "LTC Network is busy. An admin will verify your hash shortly.";
         }
-    } catch (e) {
-        console.error("Verification Error:", e);
-        verificationStatus = "🚨 SYSTEM ERROR - CHECK MANUALLY";
+    } else {
+        // --- FIX FOR USDT AND OTHERS ---
+        // Since we don't have auto-verify for USDT yet, we show a "Manual Review" screen
+        icon.innerText = "⏳";
+        header.innerText = "Submission Received";
+        header.style.color = "#f1c40f"; // Gold
+        text.innerText = "Your USDT/Manual payment hash has been sent to our team. Please allow 5-15 minutes for manual verification, You will be contacted via Discord or Email Address you Provided, **INCASE OF WRONG DISCORD OR EMAIL CONTACT SUPPORT**";
+        verificationStatus = `⏳ MANUAL REVIEW: ${method.toUpperCase()}`;
+        statusColor = 16763904; // Gold
     }
 
-    // Send the final result to your Discord Webhook
-    await fetch(WEBHOOK_URL, {
+    // 4. FINAL WEBHOOK LOG
+    fetch(WEBHOOK_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -412,22 +462,14 @@ async function confirmPurchase() {
                 title: verificationStatus,
                 color: statusColor,
                 fields: [
-                    { name: "🛍️ Item", value: itemName, inline: true },
+                    { name: "🛍️ Item", value: itemName },
                     { name: "👤 Roblox", value: robloxUser, inline: true },
-                    { name: "💰 Method", value: method, inline: true },
-                    { name: "🔗 TXID", value: `\`${tx}\``, inline: false },
                     { name: "📱 Contact", value: contact, inline: true },
-                    { name: "💬 Comments", value: comments, inline: true }
+                    { name: "🔗 Hash", value: `\`${hash}\`` },
+                    { name: "💬 Comments", value: comments }
                 ],
-                footer: { text: "Arrow & Pixy Ironclad Engine" },
                 timestamp: new Date()
             }]
         })
-    });
-
-    // Show the result screen to the user
-    document.getElementById('step-2').classList.add('hidden');
-    document.getElementById('step-success').classList.remove('hidden');
-    btn.innerText = "CONFIRM PURCHASE";
-    btn.disabled = false;
+    }).catch(err => console.error("Webhook failed:", err));
 }
