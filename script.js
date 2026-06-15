@@ -1,5 +1,5 @@
 /* --- ARROW & PIXY: MULTI-GAME PREMIUM HUB v2.5 --- */
-console.log("Vercel Build v2.6.1 - Active");
+
 
 const PRODUCTS = [
     // --- BLOX FRUITS: PERMANENT FRUITS ---
@@ -110,9 +110,55 @@ const PRODUCTS = [
     { name: "Hypershift", price: "$261.00", category: "jailbreak", type: "item", img: "https://jbvalues.com/images/items/color/hypershift.webp" },
     { name: "Void", price: "$38.00", category: "jailbreak", type: "item", img: "https://jbvalues.com/images/items/rim/void.webp" },
     { name: "Checker", price: "$32.00", category: "jailbreak", type: "item", img: "https://jbvalues.com/images/items/texture/checker.webp" },
-    { name: "Hypercolors Lvl.5", price: "$32.00-50.00", category: "jailbreak", type: "item", img: "https://jbvalues.com/images/items/color/hyperbluelvl5.webp" }
-]; // End of PRODUCTS array
+    { name: "Hypercolors Lvl.5", price: "$32.00-50.00", category: "jailbreak", type: "item", img: "https://jbvalues.com/images/items/color/hyperbluelvl5.webp" },
 
+    // --- +1 SPEED KEYBOARD ESCAPE ---
+    { name: "ADMIN Treadmill", price: "$7.67", category: "speedkeyboard", type: "treadmill", img: "https://tr.rbxcdn.com/180DAY-3277314252cabc11d9eb2c232ae39d74/150/150/Image/Png/noFilter" },
+    { name: "Candy Treadmill", price: "$3.59", category: "speedkeyboard", type: "treadmill", img: "https://tr.rbxcdn.com/180DAY-b8f39647ec6a577f6a325c90d7399488/150/150/Image/Png/noFilter" },
+    { name: "Diamond Treadmill", price: "$1.26", category: "speedkeyboard", type: "treadmill", img: "https://tr.rbxcdn.com/180DAY-60d3aaf83e4a18703154e06ba9de882f/150/150/Image/Png/noFilter" },
+    { name: "Gold Treadmill", price: "$0.30", category: "speedkeyboard", type: "treadmill", img: "https://tr.rbxcdn.com/180DAY-d0ba1b185424a1073c5b58eb3f0138bf/150/150/Image/Png/noFilter" },
+    { name: "More Equipped Items (20 slots)", price: "$1.43", category: "speedkeyboard", type: "upgrade", img: "https://tr.rbxcdn.com/180DAY-77ef2d695f297fda7645bdc241a2ab0c/150/150/Image/Png/noFilter" },
+    { name: "Unlock Soundpacks", price: "$0.30", category: "speedkeyboard", type: "upgrade", img: "https://tr.rbxcdn.com/180DAY-ffc48f60c6d282e29162e807a85687e1/150/150/Image/Png/noFilter" },
+    { name: "Speed Multiplier [Tier 6]", price: "$0.66", category: "speedkeyboard", type: "upgrade", img: "https://tr.rbxcdn.com/180DAY-576244e0278ab24b7b92832c2a6414ad/150/150/Image/Png/noFilter" },
+    { name: "Speed Multiplier [Tier 9]", price: "$2.15", category: "speedkeyboard", type: "upgrade", img: "https://tr.rbxcdn.com/180DAY-576244e0278ab24b7b92832c2a6414ad/150/150/Image/Png/noFilter" },
+    { name: "InfinityTrail", price: "$14.39", category: "speedkeyboard", type: "trail", img: "https://tr.rbxcdn.com/180DAY-483cb7c5ad0914e84c8fe87c138edd28/150/150/Image/Png/noFilter" },
+    { name: "CosmicTrail", price: "$7.67", category: "speedkeyboard", type: "trail", img: "https://tr.rbxcdn.com/180DAY-1564c4401ea621ccd57c33193422ee80/150/150/Image/Png/noFilter" },
+    { name: "RainbowTrail", price: "$1.19", category: "speedkeyboard", type: "trail", img: "https://tr.rbxcdn.com/180DAY-487e143c26ee84d382aaa3935c94b7ba/150/150/Image/Png/noFilter" },
+    { name: "GalaxyTrail", price: "$1.91", category: "speedkeyboard", type: "trail", img: "https://tr.rbxcdn.com/180DAY-92dcd4cbac739ce94360681e8d827b05/150/150/Image/Png/noFilter" },
+    { name: "GreenTrail", price: "$0.10", category: "speedkeyboard", type: "trail", img: "https://tr.rbxcdn.com/180DAY-bd3a7e0170313f90ff45dff8dd5e024d/150/150/Image/Png/noFilter" },
+    { name: "BlueTrail", price: "$0.14", category: "speedkeyboard", type: "trail", img: "https://tr.rbxcdn.com/180DAY-285d937cddbc40abb123fbd5ddce55fd/150/150/Image/Png/noFilter" },
+    { name: "PurpleTrail", price: "$0.30", category: "speedkeyboard", type: "trail", img: "https://tr.rbxcdn.com/180DAY-249b4530f64fb18838d6f569d1d4137a/150/150/Image/Png/noFilter" },
+    { name: "VoidTrail", price: "$9.59", category: "speedkeyboard", type: "trail", img: "https://tr.rbxcdn.com/180DAY-336fbf245df5a29a83008e2d46d943d2/150/150/Image/Png/noFilter" },
+    { name: "GodlikeTrail", price: "$12.48", category: "speedkeyboard", type: "trail", img: "https://tr.rbxcdn.com/180DAY-2f1f20522199ba6dd742872d70b31979/150/150/Image/Png/noFilter" },
+    { name: "RedTrail", price: "$0.71", category: "speedkeyboard", type: "trail", img: "https://tr.rbxcdn.com/180DAY-c0f1e4d2e5f76109c434fd8530166242/150/150/Image/Png/noFilter" },
+    { name: "SupernovaTrail", price: "$11.03", category: "speedkeyboard", type: "trail", img: "https://tr.rbxcdn.com/180DAY-88315b7cee6c14ecf9d51477f21649e6/150/150/Image/Png/noFilter" },
+    { name: "GlowAura", price: "$0.30", category: "speedkeyboard", type: "aura", img: "https://tr.rbxcdn.com/180DAY-acbb7cd24087147663b662d69750e603/150/150/Image/Png/noFilter" },
+    { name: "FireAura", price: "$3.11", category: "speedkeyboard", type: "aura", img: "https://tr.rbxcdn.com/180DAY-267118c5082396c1feebf0fab7bf4d7a/150/150/Image/Png/noFilter" },
+    { name: "WindAura", price: "$1.19", category: "speedkeyboard", type: "aura", img: "https://tr.rbxcdn.com/180DAY-57f8807589030ceafbb5b91784ddc942/150/150/Image/Png/noFilter" },
+    { name: "WaterAura", price: "$2.39", category: "speedkeyboard", type: "aura", img: "https://tr.rbxcdn.com/180DAY-7fa9f88b2adfdeb9d23bd17b6600cbf5/150/150/Image/Png/noFilter" },
+    // --- GROW A GARDEN 2
+
+    { name: "Power Hose", price: "$1.95", category: "gag2", type: "gamepass", img: "https://tr.rbxcdn.com/180DAY-be18fcb33c2182bcf94ef294e700e650/150/150/Image/Webp/noFilter" },
+    { name: "Vine Wrapper", price: "$3.25", category: "gag2", type: "gamepass", img: "https://tr.rbxcdn.com/180DAY-41a1fa4bb3a4915ebc52e3acb949a33b/150/150/Image/Webp/noFilter" },
+    { name: "Rainbow Magic Carpet", price: "$3.90", category: "gag2", type: "gamepass", img: "https://tr.rbxcdn.com/180DAY-c39b49314789ba8e6cd19070fa25718c/150/150/Image/Webp/noFilter" },
+    { name: "Freeze Ray!", price: "$4.85", category: "gag2", type: "gamepass", img: "https://tr.rbxcdn.com/180DAY-d16defaa10b8648fd64f9b4c7d896632/150/150/Image/Webp/noFilter" },
+    // --- GROW A GARDEN 2 (SEED SHOP) ---
+    
+    { name: "x1 Poison Apple", price: "$8.40", category: "gag2", type: "seed", img: "https://assetsio.gnwcdn.com/gag-2-seed-shop.jpg?width=2070&height=1164&fit=crop&quality=85&format=jpg&auto=webp" },
+    { name: "x1 Moon Bloom", price: "$8.70", category: "gag2", type: "seed", img: "https://assetsio.gnwcdn.com/gag-2-seed-shop.jpg?width=2070&height=1164&fit=crop&quality=85&format=jpg&auto=webp" },
+    { name: "x1 Dragon's Breath", price: "$9.50", category: "gag2", type: "seed", img: "https://assetsio.gnwcdn.com/gag-2-seed-shop.jpg?width=2070&height=1164&fit=crop&quality=85&format=jpg&auto=webp" },
+    { name: "x1 Sunflower", price: "$3.90", category: "gag2", type: "seed", img: "https://assetsio.gnwcdn.com/gag-2-seed-shop.jpg?width=2070&height=1164&fit=crop&quality=85&format=jpg&auto=webp" },
+    { name: "x1 Venus Fly Trap", price: "$5.20", category: "gag2", type: "seed", img: "https://assetsio.gnwcdn.com/gag-2-seed-shop.jpg?width=2070&height=1164&fit=crop&quality=85&format=jpg&auto=webp" },
+    { name: "x1 Pomegranate", price: "$6.50", category: "gag2", type: "seed", img: "https://assetsio.gnwcdn.com/gag-2-seed-shop.jpg?width=2070&height=1164&fit=crop&quality=85&format=jpg&auto=webp" },
+    // --- KICK A LUCKY BLOCK STORES ---
+
+// --- KICK A LUCKY BLOCK OFFICIAL STORES ---
+    { name: "x2 Kick Power", price: "$1.67", category: "kickluckyblock", type: "gamepass", img: "https://tr.rbxcdn.com/180DAY-2af03e39987ec4038e25e729b775aaf7/150/150/Image/Webp/noFilter" },
+    { name: "x2 Cash", price: "$3.00", category: "kickluckyblock", type: "gamepass", img: "https://tr.rbxcdn.com/180DAY-13a80eacf462f1b4b6e54f508b40cdc6/150/150/Image/Webp/noFilter" },
+    { name: "VIP", price: "$3.54", category: "kickluckyblock", type: "gamepass", img: "https://tr.rbxcdn.com/180DAY-8ef99f03b4611b1b2ae24dde4b59650c/150/150/Image/Webp/noFilter" },
+    { name: "x2 Brainrot Luck", price: "$1.19", category: "kickluckyblock", type: "gamepass", img: "https://tr.rbxcdn.com/180DAY-7a0abad7eb7652737204761838d9843a/150/150/Image/Webp/noFilter" },
+    { name: "x2 Mutation Luck", price: "$1.67", category: "kickluckyblock", type: "gamepass", img: "https://tr.rbxcdn.com/180DAY-f4b45fe437a284ace4c003f9e2b2687d/150/150/Image/Webp/noFilter" }
+]; // End of PRODUCTS array
 const WALLETS = {
     LTC: "LUTPGLQ8B84n5D9gWhjCyDQx6Leb8o91tC",
     USDT_TRX: "TCrPMWfvVZjQdDDQdTyK7DNDzxgKGFhDZR",
@@ -387,10 +433,13 @@ async function processPayment() {
     if (!robloxUser || !contact || !hash) {
         errorBox.classList.remove('hidden');
         errorText.innerText = "All fields marked with * are required!";
-        
-        // Optional: Hide error after 4 seconds
+        errorBox.classList.remove('shake');
+        void errorBox.offsetWidth;
+        errorBox.classList.add('shake');
+
         setTimeout(() => {
             errorBox.classList.add('hidden');
+            errorBox.classList.remove('shake');
         }, 4000);
         return;
     }
