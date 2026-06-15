@@ -3,102 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <meta name="google-site-verification" content="M4UMWybPFo008KIsxExi56R8FirkTUnCkSxYEo7eTdE" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2"> <title>Arrow & Pixy Store | Buy Blox Fruits, MM2 & Adopt Me Items Pakistan</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2">
+    <title>Arrow & Pixy Store | Buy Blox Fruits, MM2 & Adopt Me Items Pakistan</title>
     <meta name="description" content="Buy Permanent Blox Fruits, MM2 Godlies, and Adopt Me Pets safely with Arrow & Pixy. Best prices, instant delivery in Pakistan, and 100% secure assets.">
     <meta name="keywords" content="Buy Blox Fruits Pakistan, Cheap Permanent Blox Fruits, MM2 Godlies for sale, Buy Adopt Me Pets, Roblox Items Store, Kitsune Fruit Price, Dragon Fruit Blox Fruits, Murder Mystery 2 Knives, Roblox Assets Pakistan, Arrow and Pixy Hub">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Rajdhani:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="header-contact-top">
-        <div class="support-content">
-            <i class="fab fa-discord"></i> <span>@realarrows | @realpixy</span>
-            <div style="margin-top: 4px;"></div>
-            <i class="fas fa-envelope"></i> <span>pixystrikes@gmail.com</span>
-        </div>
+    <div class="ambient-bg" aria-hidden="true">
+        <div class="ambient-orb ambient-orb--gold"></div>
+        <div class="ambient-orb ambient-orb--violet"></div>
+        <div class="ambient-grid"></div>
     </div>
 
+    <nav class="site-navbar" id="site-navbar">
+        <div class="navbar-inner">
+            <a href="#" class="navbar-brand" onclick="backToHub(); return false;">
+                <span class="brand-icon"><i class="fas fa-bolt"></i></span>
+                <span class="brand-text">Arrow &amp; Pixy <span class="highlight">HUB</span></span>
+            </a>
+
+            <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+
+            <div class="navbar-links" id="navbar-links">
+                <a href="#" class="nav-link active" id="nav-hub" onclick="backToHub(); return false;">
+                    <i class="fas fa-store"></i> Store Hub
+                </a>
+                <a href="https://discord.gg/4JUaY4DWSq" target="_blank" class="nav-link">
+                    <i class="fab fa-discord"></i> Support
+                </a>
+                <div class="nav-status">
+                    <span class="status-dot"></span>
+                    <span class="status-label">All Systems Online</span>
+                </div>
+            </div>
+
+            <div class="navbar-contact">
+                <span><i class="fab fa-discord"></i> @realarrows | @realpixy</span>
+                <span><i class="fas fa-envelope"></i> pixystrikes@gmail.com</span>
+            </div>
+        </div>
+    </nav>
+
     <div id="hub-view">
-        <header>
-            <div class="header-container">
-                <i class="fas fa-shield-alt"></i>
-                <h1>Arrow & Pixy <span class="highlight">HUB</span></h1>
-                <i class="fas fa-shield-alt"></i>
-            </div>
-            <p>SELECT YOUR UNIVERSE</p>
-        </header>
 
-        <div class="hub-container">
-            <div class="hub-card" onclick="openStore('bloxfruits')">
-                <div class="hub-img-box">
-                    <img src="https://tr.rbxcdn.com/180DAY-e1ce51abae5188805c3fee78ec7f4d08/768/432/Image/Webp/noFilter" alt="Buy Blox Fruits">
-                </div>
-                <div class="hub-info">
-                    <h3>Blox Fruits</h3>
-                    <p>Permanent Fruits & Elite Gamepasses</p>
-                    <button class="hub-btn">ENTER STORE</button>
-                </div>
-            </div>
-
-            <div class="hub-card" onclick="openStore('adoptme')">
-                <div class="hub-img-box">
-                    <img src="https://tr.rbxcdn.com/180DAY-b6426ad9d8b07339a22647108ef9de15/768/432/Image/Webp/noFilter" alt="Buy Adopt Me Pets">
-                </div>
-                <div class="hub-info">
-                    <h3>Adopt Me</h3>
-                    <p>High-Tier Legendaries (FR/NFR/MFR)</p>
-                    <button class="hub-btn">ENTER STORE</button>
+        <section class="hero-banner">
+            <div class="hero-content">
+                <p class="hero-eyebrow">Premium Roblox Assets</p>
+                <h1 class="hero-title">
+                    Enter the <span class="highlight">Universe</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Secure delivery, crypto-ready checkout, and elite inventory across every major Roblox game.
+                </p>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <span class="hero-stat-value">8+</span>
+                        <span class="hero-stat-label">Game Stores</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-value">24/7</span>
+                        <span class="hero-stat-label">Support</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-value">LTC</span>
+                        <span class="hero-stat-label">Auto-Verify</span>
+                    </div>
                 </div>
             </div>
+            <div class="hero-visual" aria-hidden="true">
+                <div class="hero-ring hero-ring--outer"></div>
+                <div class="hero-ring hero-ring--inner"></div>
+                <i class="fas fa-shield-alt hero-shield"></i>
+            </div>
+        </section>
 
-            <div class="hub-card" onclick="openStore('mm2')">
-                <div class="hub-img-box">
-                    <img src="https://tr.rbxcdn.com/180DAY-fe7335c3ad752e84323cd81ae38de69a/768/432/Image/Webp/noFilter" alt="Buy MM2 Godlies">
-                </div>
-                <div class="hub-info">
-                    <h3>Murder Mystery 2</h3>
-                    <p>Godlies, Ancients & Exclusive Knives</p>
-                    <button class="hub-btn">ENTER STORE</button>
-                </div>
+        <section class="hub-section">
+            <div class="section-header">
+                <p class="section-eyebrow">Select Your Universe</p>
+                <h2 class="section-heading">Store <span class="highlight">Hub</span></h2>
             </div>
 
-            <div class="hub-card" onclick="openStore('rivals')">
-                <div class="hub-img-box">
-                    <img src="https://tr.rbxcdn.com/180DAY-eb783deba3b661ff753ab9be4089188d/768/432/Image/Webp/noFilter" alt="Roblox Rivals Items">
-                </div>
-                <div class="hub-info">
-                    <h3>Rivals</h3>
-                    <p>Exclusive Weapon Skins & Wraps</p>
-                    <button class="hub-btn">ENTER STORE</button>
-                </div>
-            </div>
+            <div class="hub-container">
 
-            <div class="hub-card" onclick="openStore('bladeball')">
-                <div class="hub-img-box">
-                    <img src="https://tr.rbxcdn.com/180DAY-e355a641b72a9f5c5f0ce52158541b87/768/432/Image/Webp/noFilter" alt="Blade Ball Limiteds">
+                <div class="hub-card hub-card--bloxfruits" onclick="openStore('bloxfruits')">
+                    <div class="hub-img-box">
+                        <img src="https://tr.rbxcdn.com/180DAY-e1ce51abae5188805c3fee78ec7f4d08/768/432/Image/Webp/noFilter" alt="Buy Blox Fruits">
+                    </div>
+                    <div class="hub-info">
+                        <h3>Blox Fruits</h3>
+                        <p>Permanent Fruits &amp; Elite Gamepasses</p>
+                        <button class="hub-btn">Enter Store</button>
+                    </div>
                 </div>
-                <div class="hub-info">
-                    <h3>Blade Ball</h3>
-                    <p>Limited Swords & Ability Packs</p>
-                    <button class="hub-btn">ENTER STORE</button>
-                </div>
-            </div>
 
-            <div class="hub-card" onclick="openStore('jailbreak')">
-                <div class="hub-img-box">
-                    <img src="https://tr.rbxcdn.com/180DAY-616f3da26a52b2b032276dfdcec84271/768/432/Image/Webp/noFilter" alt="Jailbreak OG Cars">
+                <div class="hub-card hub-card--adoptme" onclick="openStore('adoptme')">
+                    <div class="hub-img-box">
+                        <img src="https://tr.rbxcdn.com/180DAY-b6426ad9d8b07339a22647108ef9de15/768/432/Image/Webp/noFilter" alt="Buy Adopt Me Pets">
+                    </div>
+                    <div class="hub-info">
+                        <h3>Adopt Me</h3>
+                        <p>High-Tier Legendaries (FR/NFR/MFR)</p>
+                        <button class="hub-btn">Enter Store</button>
+                    </div>
                 </div>
-                <div class="hub-info">
-                    <h3>Jailbreak</h3>
-                    <p>OG Cars, Hyperchromes & Safes</p>
-                    <button class="hub-btn">ENTER STORE</button>
+
+                <div class="hub-card hub-card--mm2" onclick="openStore('mm2')">
+                    <div class="hub-img-box">
+                        <img src="https://tr.rbxcdn.com/180DAY-fe7335c3ad752e84323cd81ae38de69a/768/432/Image/Webp/noFilter" alt="Buy MM2 Godlies">
+                    </div>
+                    <div class="hub-info">
+                        <h3>Murder Mystery 2</h3>
+                        <p>Godlies, Ancients &amp; Exclusive Knives</p>
+                        <button class="hub-btn">Enter Store</button>
+                    </div>
                 </div>
+
+                <div class="hub-card hub-card--rivals" onclick="openStore('rivals')">
+                    <div class="hub-img-box">
+                        <img src="https://tr.rbxcdn.com/180DAY-eb783deba3b661ff753ab9be4089188d/768/432/Image/Webp/noFilter" alt="Roblox Rivals Items">
+                    </div>
+                    <div class="hub-info">
+                        <h3>Rivals</h3>
+                        <p>Exclusive Weapon Skins &amp; Wraps</p>
+                        <button class="hub-btn">Enter Store</button>
+                    </div>
+                </div>
+
+                <div class="hub-card hub-card--bladeball" onclick="openStore('bladeball')">
+                    <div class="hub-img-box">
+                        <img src="https://tr.rbxcdn.com/180DAY-aa0679c96e6ce33f961087cebcc07ce6/768/432/Image/Webp/noFilter" alt="Blade Ball Limiteds">
+                    </div>
+                    <div class="hub-info">
+                        <h3>Blade Ball</h3>
+                        <p>Limited Swords &amp; Ability Packs</p>
+                        <button class="hub-btn">Enter Store</button>
+                    </div>
+                </div>
+
+                <div class="hub-card hub-card--jailbreak" onclick="openStore('jailbreak')">
+    <div class="hub-img-box">
+        <img src="https://tr.rbxcdn.com/180DAY-616f3da26a52b2b032276dfdcec84271/768/432/Image/Webp/noFilter" alt="Jailbreak OG Cars">
+    </div>
+    <div class="hub-info">
+        <h3>Jailbreak</h3>
+        <p>OG Cars, Hyperchromes &amp; Safes</p>
+        <button class="hub-btn">Enter Store</button>
+    </div>
+</div>
+
+<div class="hub-card hub-card--speedkeyboard hub-card--new" onclick="openStore('speedkeyboard')">
+    <div class="hub-badge">New</div>
+    <!-- Swapped placeholder out for the official game thumbnail/icon -->
+    <div class="hub-img-box">
+        <img src="https://tr.rbxcdn.com/180DAY-82b559d4f2bd68f909d4b9bdd92d168e/768/432/Image/Webp/noFilterr" alt="+1 Speed Keyboard Escape">
+    </div>
+    <div class="hub-info">
+        <h3>+1 Speed Keyboard Escape</h3>
+        <p>Chocolate &amp; Candy Collection</p>
+        <button class="hub-btn hub-btn--violet">Enter Store</button>
+    </div>
+</div>
+
+<div class="hub-card hub-card--growgarden2 hub-card--new" onclick="openStore('gag2')">
+    <div class="hub-badge">New</div>
+    <!-- Swapped placeholder out for the official game thumbnail/icon -->
+    <div class="hub-img-box">
+        <img src="https://tr.rbxcdn.com/180DAY-d3506c96f41fb1085677cfc175c2bad3/768/432/Image/Webp/noFilter" alt="Grow a Garden 2">
+    </div>
+    <div class="hub-info">
+        <h3>Grow a Garden 2</h3>
+        <p>Garden &amp; Seeds Farming</p>
+        <button class="hub-btn hub-btn--violet">Enter Store</button>
+    </div>
+</div>
+
+<div class="hub-card hub-card--kicklucky hub-card--new" onclick="openStore('kickluckyblock')">
+    <div class="hub-badge">New</div>
+    <!-- Swapped placeholder out for the official game thumbnail/icon -->
+    <div class="hub-img-box">
+        <img src="https://tr.rbxcdn.com/180DAY-829dd7deb9a2a04609c27a366096f07d/768/432/Image/Webp/noFilter" alt="Kick a Lucky Block">
+    </div>
+    <div class="hub-info">
+        <h3>Kick a Lucky Block</h3>
+        <p>Exclusive Blocks &amp; Power-Ups</p>
+        <button class="hub-btn hub-btn--neon">Enter Store</button>
+    </div>
+</div>
+
             </div>
-        </div> 
+        </section>
 
         <div class="custom-request-banner">
             <div class="banner-image">
@@ -110,22 +211,25 @@
                     <p>We can source assets for almost any universe. Reach out to our team to place a custom order.</p>
                 </div>
                 <a href="https://discord.gg/4JUaY4DWSq" target="_blank" class="hub-btn contact-btn">
-                    CONTACT SUPPORT
+                    Contact Support
                 </a>
             </div>
         </div>
     </div>
 
     <main id="main-store" class="hidden">
-        <header>
-            <div class="header-container">
-                <i class="fas fa-ship"></i>
-                <h1 id="store-title">Arrow & Pixy <span class="highlight">STORE</span></h1>
-                <i class="fas fa-ship"></i>
+        <div class="store-header">
+            <div class="store-header-inner">
+                <div class="store-header-text">
+                    <p class="section-eyebrow">Premium Inventory</p>
+                    <h1 id="store-title">Arrow &amp; Pixy <span class="highlight">STORE</span></h1>
+                    <p id="store-subtitle">PREMIUM ROBLOX ASSETS</p>
+                </div>
+                <button onclick="backToHub()" class="btn-cancel">
+                    <i class="fas fa-arrow-left"></i> Back to Hub
+                </button>
             </div>
-            <p id="store-subtitle">PREMIUM ROBLOX ASSETS</p>
-            <button onclick="backToHub()" class="btn-cancel" style="width: auto; padding: 10px 20px;">← BACK TO HUB</button>
-        </header>
+        </div>
 
         <div id="store-content"></div>
 
@@ -139,112 +243,118 @@
                     <p>Looking for a specific item? Contact us and we will find it for you at the best price.</p>
                 </div>
                 <a href="https://discord.gg/4JUaY4DWSq" target="_blank" class="hub-btn contact-btn">
-                    CONTACT SUPPORT
+                    Contact Support
                 </a>
             </div>
         </div>
     </main>
-<div id="checkout-modal" style="display: none;"> <div class="modal-content">
-        
-        <div id="step-1">
-            <h2 id="modal-item-name" class="highlight">Checkout</h2>
 
-            <div id="error-message" class="error-ui hidden">
-                <i class="fas fa-exclamation-circle"></i> 
-                <span id="error-text">All fields are mandatory!</span>
-            </div>
+    <div id="checkout-modal" style="display: none;">
+        <div class="modal-content">
 
-            <div class="input-stack" style="margin-top: 15px;">
-                <label>ROBLOX USERNAME *</label>
-                <input type="text" id="cust-roblox" placeholder="Enter your Roblox username">
-            </div>
+            <div id="step-1">
+                <h2 id="modal-item-name" class="highlight">Checkout</h2>
 
-            <div class="input-stack">
-                <label>DISCORD ID OR EMAIL ADDRESS *</label>
-                <input type="text" id="cust-discord" placeholder="e.g. user#0000 or email@example.com">
-            </div>
+                <div id="error-message" class="error-ui hidden">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span id="error-text">All fields are mandatory!</span>
+                </div>
 
-            <div class="input-stack">
-                <label>ADDITIONAL COMMENTS (OPTIONAL)</label>
-                <textarea id="cust-comments" placeholder="Any special instructions for delivery?" rows="2"></textarea>
-            </div>
+                <div class="input-stack" style="margin-top: 15px;">
+                    <label>ROBLOX USERNAME *</label>
+                    <input type="text" id="cust-roblox" placeholder="Enter your Roblox username">
+                </div>
 
-            <div class="input-stack">
-                <label>SELECT PAYMENT METHOD</label>
-                <select id="payment-method" onchange="updatePaymentUI()">
-                    <option value="ltc">Litecoin (LTC)</option>
-                    <option value="usdt_bep20">USDT (BEP20 - BSC)</option>
-                    <option value="usdt_trc20">USDT (TRC20 - TRON)</option>
-                    <option value="manual">Easypaisa / PayPal / CashApp</option>
-                </select>
-            </div>
-
-            <div id="section-ltc" class="payment-section">
                 <div class="input-stack">
-                    <label>LTC ADDRESS (LTC NETWORK)</label>
-                    <div class="address-display">LUTPGLQ8B84n5D9gWhjCyDQx6Leb8o91tC</div>
+                    <label>DISCORD ID OR EMAIL ADDRESS *</label>
+                    <input type="text" id="cust-discord" placeholder="e.g. user#0000 or email@example.com">
                 </div>
-            </div>
 
-            <div id="section-usdt-bep20" class="payment-section hidden">
                 <div class="input-stack">
-                    <label>USDT ADDRESS (BEP20 - BSC)</label>
-                    <div class="address-display">0x1758Cd49b80C309D8B9aD7ad025BD5E1830f7e1E</div>
+                    <label>ADDITIONAL COMMENTS (OPTIONAL)</label>
+                    <textarea id="cust-comments" placeholder="Any special instructions for delivery?" rows="2"></textarea>
                 </div>
-            </div>
 
-            <div id="section-usdt-trc20" class="payment-section hidden">
                 <div class="input-stack">
-                    <label>USDT ADDRESS (TRC20 - TRON)</label>
-                    <div class="address-display">TCrPMWfvVZjQdDDQdTyK7DNDzxgKGFhDZR</div>
+                    <label>SELECT PAYMENT METHOD</label>
+                    <select id="payment-method" onchange="updatePaymentUI()">
+                        <option value="ltc">Litecoin (LTC)</option>
+                        <option value="usdt_bep20">USDT (BEP20 - BSC)</option>
+                        <option value="usdt_trc20">USDT (TRC20 - TRON)</option>
+                        <option value="manual">Easypaisa / PayPal / CashApp</option>
+                    </select>
                 </div>
+
+                <div id="section-ltc" class="payment-section">
+                    <div class="input-stack">
+                        <label>LTC ADDRESS (LTC NETWORK)</label>
+                        <div class="address-display">LUTPGLQ8B84n5D9gWhjCyDQx6Leb8o91tC</div>
+                    </div>
+                </div>
+
+                <div id="section-usdt-bep20" class="payment-section hidden">
+                    <div class="input-stack">
+                        <label>USDT ADDRESS (BEP20 - BSC)</label>
+                        <div class="address-display">0x1758Cd49b80C309D8B9aD7ad025BD5E1830f7e1E</div>
+                    </div>
+                </div>
+
+                <div id="section-usdt-trc20" class="payment-section hidden">
+                    <div class="input-stack">
+                        <label>USDT ADDRESS (TRC20 - TRON)</label>
+                        <div class="address-display">TCrPMWfvVZjQdDDQdTyK7DNDzxgKGFhDZR</div>
+                    </div>
+                </div>
+
+                <div id="section-manual" class="payment-section hidden">
+                    <div class="manual-support-card">
+                        <p>To pay via <strong>Easypaisa, PayPal, or CashApp</strong>, please open a ticket in our Discord.</p>
+                        <a href="https://discord.gg/4JUaY4DWSq" target="_blank" class="discord-ticket-btn">
+                            <i class="fab fa-discord"></i> CREATE SUPPORT TICKET
+                        </a>
+                    </div>
+                </div>
+
+                <div id="crypto-inputs">
+                    <div class="input-stack" style="margin-top:15px;">
+                        <label id="hash-label">YOUR TRANSACTION HASH / ID *</label>
+                        <input type="text" id="tx-hash" placeholder="Enter transaction hash here...">
+                    </div>
+                    <button onclick="processPayment()" id="main-pay-btn" class="btn-purchase">PROCEED TO VERIFICATION</button>
+                </div>
+
+                <button onclick="closeModal()" class="btn-secondary">BACK TO SHOP</button>
             </div>
 
-            <div id="section-manual" class="payment-section hidden">
-                <div class="manual-support-card">
-                    <p>To pay via <strong>Easypaisa, PayPal, or CashApp</strong>, please open a ticket in our Discord.</p>
-                    <a href="https://discord.gg/4JUaY4DWSq" target="_blank" class="discord-ticket-btn">
-                        <i class="fab fa-discord"></i> CREATE SUPPORT TICKET
-                    </a>
+            <div id="step-success" class="hidden">
+                <div id="status-icon" style="font-size: 4rem; margin-bottom: 10px;">⏳</div>
+                <h2 id="status-header" style="color: #f1c40f; margin-bottom: 15px;">Payment Pending...</h2>
+                <div class="success-message">
+                    <p id="status-text">Processing transaction... please wait.</p>
+                    <div class="support-box">
+                        <p>Support Discord: <span style="color: #f1c40f;">@realarrows | @realpixy</span></p>
+                        <p>Support Email: <span style="color: #f1c40f;">pixystrikes@gmail.com</span></p>
+                    </div>
                 </div>
+                <button onclick="closeModal()" class="btn-modal-close">BACK TO STORE</button>
             </div>
 
-            <div id="crypto-inputs">
-                <div class="input-stack" style="margin-top:15px;">
-                    <label id="hash-label">YOUR TRANSACTION HASH / ID *</label>
-                    <input type="text" id="tx-hash" placeholder="Enter transaction hash here...">
-                </div>
-                <button onclick="processPayment()" id="main-pay-btn">PROCEED TO VERIFICATION</button>
-            </div>
-            
-            <button onclick="closeModal()" class="btn-secondary">BACK TO SHOP</button>
-        </div>
-
-        <div id="step-success" class="hidden">
-            <div id="status-icon" style="font-size: 4rem; margin-bottom: 10px;">⏳</div>
-            <h2 id="status-header" style="color: #f1c40f; margin-bottom: 15px;">Payment Pending...</h2>
-            <div class="success-message">
-                <p id="status-text">Processing transaction... please wait.</p>
-                <div class="support-box">
-                    <p>Support Discord: <span style="color: #f1c40f;">@realarrows | @realpixy</span></p>
-                    <p>Support Email: <span style="color: #f1c40f;">pixystrikes@gmail.com</span></p>
-                </div>
-            </div>
-            <button onclick="closeModal()" style="background: #333; color: white; margin-top: 20px;">BACK TO STORE</button>
-        </div>
-
-    </div>
-</div>
-
-    
-
-    <div class="footer-support">
-        <div class="support-content">
-            <i class="fab fa-discord"></i> <span>@realarrows | @realpixy</span>
-            <br>
-            <i class="fas fa-envelope"></i> <span>pixystrikes@gmail.com</span>
         </div>
     </div>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <i class="fas fa-bolt"></i> Arrow &amp; Pixy Store
+            </div>
+            <div class="footer-support">
+                <div class="support-content">
+                    <span><i class="fab fa-discord"></i> @realarrows | @realpixy</span>
+                    <span><i class="fas fa-envelope"></i> pixystrikes@gmail.com</span>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <div style="display:none; visibility:hidden; height:0; width:0; overflow:hidden;">
         <h2>How to buy Blox Fruits and MM2 Godlies in Pakistan</h2>
@@ -252,5 +362,11 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+        document.getElementById('navbar-toggle')?.addEventListener('click', function () {
+            document.getElementById('navbar-links')?.classList.toggle('open');
+            this.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
