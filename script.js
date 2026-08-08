@@ -113,7 +113,7 @@ const PRODUCTS = [
   { name: "Sunrise", price: "$37.50", category: "mm2", type: "weapon", img: "https://assets.ig-items.com/files/mm2/sunrise.png" },
   { name: "Treat", price: "$5.55", category: "mm2", type: "weapon", img: "https://assets.ig-items.com/files/mm2/treat.png" },
   { name: "Watergun", price: "$8.25", category: "mm2", type: "weapon", img: "https://assets.ig-items.com/files/mm2/watergun.png" },
-];
+
 
 
     // --- RIVALS (ADD YOUR NEW STUFF BELOW) ---
