@@ -68,7 +68,7 @@ const PRODUCTS = [
     },
 
     // --- MURDER MYSTERY 2 ---
-    const mm2Items = [
+    
   { name: "C Beachy Set", price: "$127.50", category: "mm2", type: "weapon", img: "https://assets.ig-items.com/files/mm2/beachy.png" },
   { name: "Traveler Set", price: "$397.50", category: "mm2", type: "weapon", img: "https://assets.ig-items.com/files/mm2/traveler-s-axe.png" },
   { name: "Alien Set", price: "$135.00", category: "mm2", type: "weapon", img: "https://assets.ig-items.com/files/mm2/alienbeam.png" },
@@ -115,7 +115,7 @@ const PRODUCTS = [
   { name: "Watergun", price: "$8.25", category: "mm2", type: "weapon", img: "https://assets.ig-items.com/files/mm2/watergun.png" },
 ];
 
-export default mm2Items;
+
     // --- RIVALS (ADD YOUR NEW STUFF BELOW) ---
     { name: "Skin Case", price: "$1.50", category: "rivals", type: "skin", img: "https://i.postimg.cc/L6M1gChs/Skin-Case-1.webp" },
     { name: "Skin Case (x3)", price: "$4.00", category: "rivals", type: "skin", img: "https://i.postimg.cc/L6M1gChs/Skin-Case-1.webp" },
